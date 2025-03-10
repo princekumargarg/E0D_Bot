@@ -3,6 +3,16 @@ require("dotenv").config();
 const { Telegraf, Markup } = require("telegraf");
 const nodemailer = require("nodemailer");
 
+const express = require("express");
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get("/", (req, res) => {
+  res.send("Telegram bot is running!");
+});
+
+app.listen(PORT, () => console.log(`HTTP server listening on port ${PORT}`));
+
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const EMAIL_USER = process.env.EMAIL_USER;
 const EMAIL_PASS = process.env.EMAIL_PASS;
